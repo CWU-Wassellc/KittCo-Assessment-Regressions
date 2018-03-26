@@ -38,6 +38,8 @@ logit.average.partial.0911
 assessed_bare$change.0910.to.1011 <- ( assessed_bare$AssessedLandValue_2011 - assessed_bare$AssessedLandValue_2010 ) / (assessed_bare$AssessedLandValue_2010) 
 assessed_bare$change.0910.to.1011
 
+library(ggplot2)
+
 qplot(assessed_bare$change.0910.to.1011)
 
 
@@ -46,3 +48,13 @@ library(dplyr)
 declined.09.10 <- select ( filter ( assessed_bare, assessed_bare$Drop_09.10 == 1 ), c(change.0910.to.1011))
 declined.09.10
 summary(declined.09.10)
+
+#####
+
+assessed_bare$change.0809.to.1011 <- ( assessed_bare$AssessedLandValue_2011 - assessed_bare$AssessedLandValue_2009 ) / (assessed_bare$AssessedLandValue_2009) 
+assessed_bare$change.0809.to.1011
+
+avg.decline.09.11 <- select ( filter ( assessed_bare, assessed_bare$Drop_09.11 == 1 ), c(change.0809.to.1011))
+qplot(avg.decline.09.11)
+summary(avg.decline.09.11)
+
